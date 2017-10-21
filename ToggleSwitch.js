@@ -7,7 +7,7 @@
  * @benkeroumamine
  */
 
-import React, {PropTypes} from 'react'
+import React from 'react'
 import {
   StyleSheet,
   Text,
@@ -18,6 +18,7 @@ import {
   Easing
 } from 'react-native'
 
+import PropTypes from 'prop-types'
 
 class ToggleSwitch extends React.Component{
 
