@@ -1,0 +1,33 @@
+{
+  "name": "toggle-switch-react-native",
+  "version": "0.0.1",
+  "description": "Toggle Switch component for react native, it works on iOS and Android.",
+  "main": "ToggleSwitch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crazycodeboy/react-native-check-box.git"
+  },
+  "keywords": [
+    "react-native",
+    "react-native-component",
+    "react-native-toggle-switch",
+    "toggle-switch",
+    "toggle",
+    "switch",
+    "on-off",
+    "ios",
+    "android"
+  ],
+  "author": "aminebenkeroum",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aminebenkeroum/toggle-switch-react-native/issues"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.47.1"
+  },
+  "homepage": "https://github.com/aminebenkeroum/toggle-switch-react-native#readme"
+}
