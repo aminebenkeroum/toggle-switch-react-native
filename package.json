@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crazycodeboy/react-native-check-box.git"
+    "url": "git+https://github.com/aminebenkeroum/toggle-switch-react-native.git"
   },
   "keywords": [
     "react-native",
