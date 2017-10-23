@@ -40,7 +40,8 @@ class ToggleSwitch extends React.Component{
         onColor: PropTypes.string.isRequired,
         offColor: PropTypes.string.isRequired,
         size: PropTypes.string,
-        labelStyle: PropTypes.object
+        labelStyle: PropTypes.object,
+        onToggle: PropTypes.func.isRequired
     }
 
     static defaultProps = {
@@ -68,6 +69,7 @@ class ToggleSwitch extends React.Component{
     }
     
     onToggle(){
+        
         if(this.props.isOn)
             toValue = this.state.isOn ?  (- this.state.dimensions.width + (this.state.dimensions.translateX)  ) : 0
         else
@@ -79,10 +81,15 @@ class ToggleSwitch extends React.Component{
               duration: 300,
             }                              
         ).start();
+        
+        let newState = !this.state.isOn
+
         this.setState({
             ...this.state,
-            isOn : ! this.state.isOn
+            isOn : newState
         })
+
+        this.props.onToggle(newState)
     }
 
 

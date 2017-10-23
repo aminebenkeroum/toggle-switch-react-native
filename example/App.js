@@ -15,6 +15,11 @@ import {
 import ToggleSwitch from 'toggle-switch-react-native'
 
 export default class App extends Component<{}> {
+
+  onToggle(isOn){
+    alert('Changed to ' + isOn)
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -24,15 +29,15 @@ export default class App extends Component<{}> {
         <Text style={styles.instructions}>
           Default Toggle
         </Text>
-        <ToggleSwitch label="Hello" />
+        <ToggleSwitch onToggle={this.onToggle} label="Hello" />
         <Text style={styles.instructions}>
           Default Toggle Large
         </Text>
-        <ToggleSwitch size="large" label="Hello" />
+        <ToggleSwitch onToggle={this.onToggle} size="large" label="Hello" />
         <Text style={styles.instructions}>
           Change On Color
         </Text>
-        <ToggleSwitch onColor="#2196F3" size="medium" label="Hello" />
+        <ToggleSwitch onToggle={this.onToggle} onColor="#2196F3" size="medium" label="Hello" />
 
       </View>
     );
