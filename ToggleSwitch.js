@@ -71,9 +71,10 @@ class ToggleSwitch extends React.Component{
     onToggle(){
         
         if(this.props.isOn)
-            toValue = this.state.isOn ?  (- this.state.dimensions.width + (this.state.dimensions.translateX)  ) : 0
+            toValue = (- this.state.dimensions.width + (this.state.dimensions.translateX))
         else
-            toValue = this.state.isOn ?  0 : ( this.state.dimensions.width - (this.state.dimensions.translateX) )
+            toValue = 0
+    
         Animated.timing(
             this.state.offsetX,
             {
