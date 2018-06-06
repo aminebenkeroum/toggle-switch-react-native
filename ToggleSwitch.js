@@ -94,13 +94,34 @@ class ToggleSwitch extends React.Component{
         this.props.onToggle(newState)
     }
 
+    createToggleSwitchStyle = () => ({
+      justifyContent: 'center',
+      width: this.state.dimensions.width,
+      borderRadius: 20,
+      padding: this.state.dimensions.padding,
+      backgroundColor: (this.state.isOn) ? this.props.onColor : this.props.offColor,
+    })
+
+    createInsideCercleStyle = () => ({
+      ...this.state.initialDirection,
+      margin: 4,
+      position: 'absolute',
+      backgroundColor: 'white',
+      transform: [{ translateX: this.state.offsetX }],
+      width: this.state.dimensions.cercleWidth,
+      height: this.state.dimensions.cercleHeight,
+      borderRadius: (this.state.dimensions.cercleWidth / 2),
+    });
 
     render(){
         return (
             <View style={styles.container}>
-                { (this.props.label) ? <Text style={[styles.labelStyle, this.props.labelStyle]}>{this.props.label}</Text> : null}
-                <TouchableOpacity style={{ justifyContent: 'center', width: this.state.dimensions.width, borderRadius: 20, padding: this.state.dimensions.padding, backgroundColor: (this.state.isOn) ? this.props.onColor : this.props.offColor}} activeOpacity={0.8} onPress={this.onToggle.bind(this)}>
-                    <Animated.View style={{  margin: 4, transform: [{translateX: this.state.offsetX}] ,position: 'absolute', ...this.state.initialDirection , width: this.state.dimensions.cercleWidth, height: this.state.dimensions.cercleHeight, borderRadius: (this.state.dimensions.cercleWidth/2), backgroundColor: 'white'}} />
+                {(this.props.label)
+                  ? <Text style={[styles.labelStyle, this.props.labelStyle]}>{this.props.label}</Text>
+                  : null
+                }
+                <TouchableOpacity style={this.createToggleSwitchStyle()} activeOpacity={0.8} onPress={this.onToggle.bind(this)}>
+                    <Animated.View style={this.createInsideCercleStyle()} />
                 </TouchableOpacity>
             </View>
         )
