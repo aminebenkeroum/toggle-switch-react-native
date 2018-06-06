@@ -30,8 +30,8 @@ class ToggleSwitch extends React.Component{
             label: this.props.label,
             offsetX: new Animated.Value(0),
             initialDirection:  (this.props.isOn) ? {right: 0} : {left: 0},
+            dimensions: ToggleSwitch.calculateDimensions(this.props.size),
         }
-        this.calculateDimensions(this)
     }
 
     static propTypes = {
@@ -52,20 +52,21 @@ class ToggleSwitch extends React.Component{
         labelStyle: {}
     }
 
-    calculateDimensions(){
-        let dimensions = {}
-        switch(this.props.size){
+    static calculateDimensions(size) {
+        switch(size){
             case 'small':
-                dimensions = {width: 50, padding: 10, cercleWidth: 15, cercleHeight: 15, translateX: 22}
-            break;
+                return ({
+                  width: 50, padding: 10, cercleWidth: 15, cercleHeight: 15, translateX: 22
+                });
             case 'large':
-                dimensions = {width: 100, padding: 20, cercleWidth: 30, cercleHeight: 30, translateX: 38}
-            break;
+                return ({
+                  width: 100, padding: 20, cercleWidth: 30, cercleHeight: 30, translateX: 38
+                });
             default:
-                dimensions = {width: 60, padding: 12, cercleWidth: 18, cercleHeight: 18, translateX: 26}
-            break;
+                return ({
+                  width: 60, padding: 12, cercleWidth: 18, cercleHeight: 18, translateX: 26
+                });
         }
-        this.state.dimensions = dimensions
     }
     
     onToggle(){
