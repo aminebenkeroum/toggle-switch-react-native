@@ -16,7 +16,8 @@ Toggle Switch Component for react native, it works on iOS and Android.
 ## Demo  
 * [Example](https://github.com/aminebenkeroum/toggle-switch-react-native/tree/master/example)
 
-![Screenshots](https://raw.githubusercontent.com/aminebenkeroum/toggle-switch-react-native/master/example/Screenshots/Screenshot.gif)
+![Screenshots](https://user-images.githubusercontent.com/8489199/41022608-0d8a7b3a-69a5-11e8-8383-a59f89aae9b4.gif)
+
 
 ## Getting started  
 
@@ -52,7 +53,7 @@ onToggle | Function Callback | false |  none | Callback when the toggle switch c
 
 ## Contribution
 
-If you encountered an Issue, please add a screenshot of the bug or a code snippet. 
+If you encountered an Issue, please add a screenshot of the bug or a code snippet.
 
 Quickest way to solve issue is to reproduce it on the example project
 
