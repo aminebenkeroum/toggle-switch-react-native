@@ -20,18 +20,12 @@ import {
 
 import PropTypes from 'prop-types'
 
-class ToggleSwitch extends React.Component{
-
-    constructor(props){
-        super(props)
-        this.props = props
-        this.state = {
-            isOn: this.props.isOn,
-            label: this.props.label,
-            offsetX: new Animated.Value(0),
-            initialDirection:  (this.props.isOn) ? {right: 0} : {left: 0},
-            dimensions: ToggleSwitch.calculateDimensions(this.props.size),
-        }
+class ToggleSwitch extends React.Component {
+    constructor(props) {
+        super(props);
+        this.offsetX = new Animated.Value(0);
+        this.initialDirection = (this.props.isOn) ? { right: 0 } : { left: 0 };
+        this.dimensions = ToggleSwitch.calculateDimensions(this.props.size);
     }
 
     static propTypes = {
@@ -72,45 +66,38 @@ class ToggleSwitch extends React.Component{
     onToggle(){
         
         if(this.props.isOn)
-            toValue = (- this.state.dimensions.width + (this.state.dimensions.translateX))
+            toValue = (- this.dimensions.width + (this.dimensions.translateX))
         else
             toValue = 0
     
         Animated.timing(
-            this.state.offsetX,
+            this.offsetX,
             {
               toValue: toValue,
               duration: 300,
             }                              
         ).start();
-        
-        let newState = !this.state.isOn
 
-        this.setState({
-            ...this.state,
-            isOn : newState
-        })
-
-        this.props.onToggle(newState)
+        this.props.onToggle(!this.props.isOn)
     }
 
     createToggleSwitchStyle = () => ({
       justifyContent: 'center',
-      width: this.state.dimensions.width,
+      width: this.dimensions.width,
       borderRadius: 20,
-      padding: this.state.dimensions.padding,
-      backgroundColor: (this.state.isOn) ? this.props.onColor : this.props.offColor,
+      padding: this.dimensions.padding,
+      backgroundColor: (this.props.isOn) ? this.props.onColor : this.props.offColor,
     })
 
     createInsideCercleStyle = () => ({
-      ...this.state.initialDirection,
+      ...this.initialDirection,
       margin: 4,
       position: 'absolute',
       backgroundColor: 'white',
-      transform: [{ translateX: this.state.offsetX }],
-      width: this.state.dimensions.cercleWidth,
-      height: this.state.dimensions.cercleHeight,
-      borderRadius: (this.state.dimensions.cercleWidth / 2),
+      transform: [{ translateX: this.offsetX }],
+      width: this.dimensions.cercleWidth,
+      height: this.dimensions.cercleHeight,
+      borderRadius: (this.dimensions.cercleWidth / 2),
     });
 
     render(){

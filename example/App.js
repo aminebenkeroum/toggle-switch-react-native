@@ -15,6 +15,11 @@ import {
 import ToggleSwitch from 'toggle-switch-react-native'
 
 export default class App extends Component<{}> {
+  state = {
+    isOnDefaultToggleSwitch: false,
+    isOnLargeToggleSwitch: false,
+    isOnBlueToggleSwitch: false,
+  };
 
   onToggle(isOn){
     alert('Changed to ' + isOn)
@@ -29,16 +34,38 @@ export default class App extends Component<{}> {
         <Text style={styles.instructions}>
           Default Toggle
         </Text>
-        <ToggleSwitch onToggle={this.onToggle} label="Hello" />
+        <ToggleSwitch
+          label="Hello"
+          isOn={this.state.isOnDefaultToggleSwitch}
+          onToggle={isOnDefaultToggleSwitch => {
+            this.setState({ isOnDefaultToggleSwitch });
+            this.onToggle(isOnDefaultToggleSwitch);
+          }}
+        />
         <Text style={styles.instructions}>
           Default Toggle Large
         </Text>
-        <ToggleSwitch onToggle={this.onToggle} size="large" label="Hello" />
+        <ToggleSwitch
+          label="Hello"
+          size="large"
+          isOn={this.state.isOnLargeToggleSwitch}
+          onToggle={isOnLargeToggleSwitch => {
+            this.setState({ isOnLargeToggleSwitch });
+            this.onToggle(isOnLargeToggleSwitch);
+          }}
+        />
         <Text style={styles.instructions}>
           Change On Color
         </Text>
-        <ToggleSwitch onToggle={this.onToggle} onColor="#2196F3" size="medium" label="Hello" />
-
+        <ToggleSwitch
+          label="Hello"
+          onColor="#2196F3"
+          isOn={this.state.isOnBlueToggleSwitch}
+          onToggle={isOnBlueToggleSwitch => {
+            this.setState({ isOnBlueToggleSwitch });
+            this.onToggle(isOnBlueToggleSwitch);
+          }}
+        />
       </View>
     );
   }
