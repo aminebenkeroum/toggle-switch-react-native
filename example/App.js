@@ -9,14 +9,15 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
 } from 'react-native';
 
 import ToggleSwitch from 'toggle-switch-react-native'
 
 export default class App extends Component<{}> {
   state = {
-    isOnDefaultToggleSwitch: false,
+    isOnDefaultToggleSwitch: true,
     isOnLargeToggleSwitch: false,
     isOnBlueToggleSwitch: false,
   };
@@ -64,6 +65,16 @@ export default class App extends Component<{}> {
           onToggle={isOnBlueToggleSwitch => {
             this.setState({ isOnBlueToggleSwitch });
             this.onToggle(isOnBlueToggleSwitch);
+          }}
+        />
+        <Button
+          title="Clear all"
+          onPress={() => {
+            this.setState({
+              isOnDefaultToggleSwitch: false,
+              isOnLargeToggleSwitch: false,
+              isOnBlueToggleSwitch: false,
+            });
           }}
         />
       </View>
