@@ -21,8 +21,22 @@ import {
 import PropTypes from 'prop-types'
 
 class ToggleSwitch extends React.Component {
-    offsetX = new Animated.Value(0);
-    dimensions = ToggleSwitch.calculateDimensions(this.props.size);
+    static calculateDimensions(size) {
+        switch(size){
+            case 'small':
+                return ({
+                  width: 50, padding: 10, cercleWidth: 15, cercleHeight: 15, translateX: 22
+                });
+            case 'large':
+                return ({
+                  width: 100, padding: 20, cercleWidth: 30, cercleHeight: 30, translateX: 38
+                });
+            default:
+                return ({
+                  width: 60, padding: 12, cercleWidth: 18, cercleHeight: 18, translateX: 26
+                });
+        }
+    }
 
     static propTypes = {
         isOn: PropTypes.bool.isRequired,
@@ -42,22 +56,8 @@ class ToggleSwitch extends React.Component {
         labelStyle: {}
     }
 
-    static calculateDimensions(size) {
-        switch(size){
-            case 'small':
-                return ({
-                  width: 50, padding: 10, cercleWidth: 15, cercleHeight: 15, translateX: 22
-                });
-            case 'large':
-                return ({
-                  width: 100, padding: 20, cercleWidth: 30, cercleHeight: 30, translateX: 38
-                });
-            default:
-                return ({
-                  width: 60, padding: 12, cercleWidth: 18, cercleHeight: 18, translateX: 26
-                });
-        }
-    }
+    offsetX = new Animated.Value(0);
+    dimensions = ToggleSwitch.calculateDimensions(this.props.size);
 
     createToggleSwitchStyle = () => ({
       justifyContent: 'center',
