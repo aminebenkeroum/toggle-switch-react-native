@@ -58,24 +58,6 @@ class ToggleSwitch extends React.Component {
                 });
         }
     }
-    
-    onToggle(){
-        
-        if(this.props.isOn)
-            toValue = (- this.dimensions.width + (this.dimensions.translateX))
-        else
-            toValue = 0
-    
-        Animated.timing(
-            this.offsetX,
-            {
-              toValue: toValue,
-              duration: 300,
-            }                              
-        ).start();
-
-        this.props.onToggle(!this.props.isOn)
-    }
 
     createToggleSwitchStyle = () => ({
       justifyContent: 'center',
@@ -96,13 +78,31 @@ class ToggleSwitch extends React.Component {
     });
 
     render(){
+        const toValue = this.props.isOn
+            ? this.dimensions.width - this.dimensions.translateX
+            : 0
+
+        Animated.timing(
+            this.offsetX,
+            {
+              toValue: toValue,
+              duration: 300,
+            }
+        ).start();
+
         return (
             <View style={styles.container}>
                 {(this.props.label)
                   ? <Text style={[styles.labelStyle, this.props.labelStyle]}>{this.props.label}</Text>
                   : null
                 }
-                <TouchableOpacity style={this.createToggleSwitchStyle()} activeOpacity={0.8} onPress={this.onToggle.bind(this)}>
+                <TouchableOpacity
+                  style={this.createToggleSwitchStyle()}
+                  activeOpacity={0.8}
+                  onPress={() => {
+                    this.props.onToggle(!this.props.isOn);
+                  }}
+                >
                     <Animated.View style={this.createInsideCercleStyle()} />
                 </TouchableOpacity>
             </View>
