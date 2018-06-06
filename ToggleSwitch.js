@@ -21,12 +21,8 @@ import {
 import PropTypes from 'prop-types'
 
 class ToggleSwitch extends React.Component {
-    constructor(props) {
-        super(props);
-        this.offsetX = new Animated.Value(0);
-        this.initialDirection = (this.props.isOn) ? { right: 0 } : { left: 0 };
-        this.dimensions = ToggleSwitch.calculateDimensions(this.props.size);
-    }
+    offsetX = new Animated.Value(0);
+    dimensions = ToggleSwitch.calculateDimensions(this.props.size);
 
     static propTypes = {
         isOn: PropTypes.bool.isRequired,
@@ -90,7 +86,6 @@ class ToggleSwitch extends React.Component {
     })
 
     createInsideCercleStyle = () => ({
-      ...this.initialDirection,
       margin: 4,
       position: 'absolute',
       backgroundColor: 'white',
