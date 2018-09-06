@@ -23,15 +23,15 @@ export default class ToggleSwitch extends React.Component {
     switch (size) {
       case 'small':
         return ({
-          width: 50, padding: 10, cercleWidth: 15, cercleHeight: 15, translateX: 22,
+          width: 50, padding: 10, circleWidth: 15, circleHeight: 15, translateX: 22,
         });
       case 'large':
         return ({
-          width: 100, padding: 20, cercleWidth: 30, cercleHeight: 30, translateX: 38,
+          width: 100, padding: 20, circleWidth: 30, circleHeight: 30, translateX: 38,
         });
       default:
         return ({
-          width: 60, padding: 12, cercleWidth: 18, cercleHeight: 18, translateX: 26,
+          width: 60, padding: 12, circleWidth: 18, circleHeight: 18, translateX: 26,
         });
     }
   }
@@ -65,14 +65,14 @@ export default class ToggleSwitch extends React.Component {
     backgroundColor: (this.props.isOn) ? this.props.onColor : this.props.offColor,
   })
 
-  createInsideCercleStyle = () => ({
+  createInsideCircleStyle = () => ({
     margin: 4,
     position: 'absolute',
     backgroundColor: 'white',
     transform: [{ translateX: this.offsetX }],
-    width: this.dimensions.cercleWidth,
-    height: this.dimensions.cercleHeight,
-    borderRadius: (this.dimensions.cercleWidth / 2),
+    width: this.dimensions.circleWidth,
+    height: this.dimensions.circleHeight,
+    borderRadius: (this.dimensions.circleWidth / 2),
   });
 
   render() {
@@ -101,7 +101,7 @@ export default class ToggleSwitch extends React.Component {
             this.props.onToggle(!this.props.isOn);
           }}
         >
-          <Animated.View style={this.createInsideCercleStyle()} />
+          <Animated.View style={this.createInsideCircleStyle()} />
         </TouchableOpacity>
       </View>
     );
