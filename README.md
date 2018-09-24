@@ -49,6 +49,7 @@ offColor  |  String | true | '#ecf0f1' | Off Color
 label | String| true |   | Custom Label Text on the Left of the toggle Button
 labelStyle | Object | true | {marginHorizontal: 10}  | Custom Styling for the Label Text View
 size | String | true |  'medium' | Size of the toggle switch button ( 'large', 'medium', 'small')
+icon | React Component | true |  null | Icon for the toggle. Can be any React Component considerate of size
 onToggle | Function Callback | false |  none | Callback when the toggle switch component changes the state, params: isOn
 
 ## Contribution
