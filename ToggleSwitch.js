@@ -43,7 +43,8 @@ export default class ToggleSwitch extends React.Component {
     offColor: PropTypes.string.isRequired,
     size: PropTypes.string,
     labelStyle: PropTypes.object,
-    onToggle: PropTypes.func.isRequired
+    onToggle: PropTypes.func.isRequired,
+    icon: PropTypes.object,
   }
 
   static defaultProps = {
@@ -51,7 +52,8 @@ export default class ToggleSwitch extends React.Component {
     onColor: '#634fc9',
     offColor: '#ecf0f1',
     size: 'medium',
-    labelStyle: {}
+    labelStyle: {},
+    icon: null,
   }
 
   offsetX = new Animated.Value(0);
@@ -66,6 +68,8 @@ export default class ToggleSwitch extends React.Component {
   })
 
   createInsideCircleStyle = () => ({
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: 4,
     position: 'absolute',
     backgroundColor: 'white',
@@ -101,7 +105,7 @@ export default class ToggleSwitch extends React.Component {
             this.props.onToggle(!this.props.isOn);
           }}
         >
-          <Animated.View style={this.createInsideCircleStyle()} />
+          <Animated.View style={this.createInsideCircleStyle()} >{this.props.icon}</Animated.View>
         </TouchableOpacity>
       </View>
     );
