@@ -43,7 +43,8 @@ export default class ToggleSwitch extends React.Component {
     offColor: PropTypes.string.isRequired,
     size: PropTypes.string,
     labelStyle: PropTypes.object,
-    onToggle: PropTypes.func.isRequired
+    onToggle: PropTypes.func.isRequired,
+    icon: PropTypes.object,
   }
 
   static defaultProps = {
