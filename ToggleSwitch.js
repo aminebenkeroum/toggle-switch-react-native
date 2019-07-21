@@ -53,6 +53,10 @@ export default class ToggleSwitch extends React.Component {
     offColor: '#ecf0f1',
     size: 'medium',
     labelStyle: {},
+    thumbOnStyle: {},
+		thumbOffStyle: {},
+    trackOnStyle: {},
+		trackOffStyle: {},
     icon: null,
   }
 
@@ -65,6 +69,7 @@ export default class ToggleSwitch extends React.Component {
     borderRadius: 20,
     padding: this.dimensions.padding,
     backgroundColor: (this.props.isOn) ? this.props.onColor : this.props.offColor,
+    ...(this.props.isOn ? this.props.trackOnStyle : this.props.trackOffStyle)
   })
 
   createInsideCircleStyle = () => ({
@@ -77,6 +82,7 @@ export default class ToggleSwitch extends React.Component {
     width: this.dimensions.circleWidth,
     height: this.dimensions.circleHeight,
     borderRadius: (this.dimensions.circleWidth / 2),
+    ...(this.props.isOn ? this.props.thumbOnStyle : this.props.thumbOffStyle)
   });
 
   render() {
