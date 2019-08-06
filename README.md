@@ -10,47 +10,48 @@ Toggle Switch Component for react native, it works on iOS and Android.
 
 ## Installation
 
-* 1.Run `npm i toggle-switch-react-native --save`
-* 2.`import ToggleSwitch from 'toggle-switch-react-native'`    
+- 1.Run `npm i toggle-switch-react-native --save`
+- 2.`import ToggleSwitch from 'toggle-switch-react-native'`
 
-## Demo  
-* [Example](https://github.com/aminebenkeroum/toggle-switch-react-native/tree/master/example)
+## Demo
 
-![Screenshots](https://user-images.githubusercontent.com/8489199/41022608-0d8a7b3a-69a5-11e8-8383-a59f89aae9b4.gif)
+- [Example](https://github.com/aminebenkeroum/toggle-switch-react-native/tree/master/example)
 
+![Screenshots](https://user-images.githubusercontent.com/6145715/62530664-44e8c000-b841-11e9-88d5-cb06906f412f.gif)
 
-## Getting started  
+## Getting started
 
-To Get Started, Import `toggle-switch-react-native` to your js file.   
+To Get Started, Import `toggle-switch-react-native` to your js file.
 
-`import ToggleSwitch from 'toggle-switch-react-native'`  
+`import ToggleSwitch from 'toggle-switch-react-native'`
 
-Inside your component's render method, or any other method returning views, use ToggleSwitch:   
+Inside your component's render method, or any other method returning views, use ToggleSwitch:
 
 ```javascript
 <ToggleSwitch
-    isOn={false}
-    onColor='green'
-    offColor='red'
-    label='Example label'
-    labelStyle={{color: 'black', fontWeight: '900'}}
-    size='large'
-    onToggle={ (isOn) => console.log('changed to : ', isOn) }
-/>;
+  isOn={false}
+  onColor="green"
+  offColor="red"
+  label="Example label"
+  labelStyle={{ color: "black", fontWeight: "900" }}
+  size="large"
+  onToggle={isOn => console.log("changed to : ", isOn)}
+/>
 ```
 
 ## API
 
-Props              | Type     | Optional | Default     | Description
------------------ | -------- | -------- | ----------- | -----------
-isOn  | Boolean  | true | 'false'  |   Default state, true for On, false for off
-onColor | String |true |  '#634fc9' | On Color
-offColor  |  String | true | '#ecf0f1' | Off Color
-label | String| true |   | Custom Label Text on the Left of the toggle Button
-labelStyle | Object | true | {marginHorizontal: 10}  | Custom Styling for the Label Text View
-size | String | true |  'medium' | Size of the toggle switch button ( 'large', 'medium', 'small')
-icon | React Component | true |  null | Icon for the toggle. Can be any React Component considerate of size
-onToggle | Function Callback | false |  none | Callback when the toggle switch component changes the state, params: isOn
+| Props      | Type              | Optional | Default                | Description                                                               |
+| ---------- | ----------------- | -------- | ---------------------- | ------------------------------------------------------------------------- |
+| isOn       | Boolean           | true     | 'false'                | Default state, true for On, false for off                                 |
+| onColor    | String            | true     | '#634fc9'              | On Color                                                                  |
+| offColor   | String            | true     | '#ecf0f1'              | Off Color                                                                 |
+| label      | String            | true     |                        | Custom Label Text on the Left of the toggle Button                        |
+| labelStyle | Object            | true     | {marginHorizontal: 10} | Custom Styling for the Label Text View                                    |
+| size       | String            | true     | 'medium'               | Size of the toggle switch button ( 'large', 'medium', 'small')            |
+| icon       | React Component   | true     | null                   | Icon for the toggle. Can be any React Component considerate of size       |
+| onToggle   | Function Callback | false    | none                   | Callback when the toggle switch component changes the state, params: isOn |
+| disabled   | Boolean           | true     | 'false'                | Disable toggling the component                                            |
 
 ## Contribution
 
