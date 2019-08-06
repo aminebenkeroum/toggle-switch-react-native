@@ -17,7 +17,7 @@ Toggle Switch Component for react native, it works on iOS and Android.
 
 - [Example](https://github.com/aminebenkeroum/toggle-switch-react-native/tree/master/example)
 
-![Screenshots](https://user-images.githubusercontent.com/6145715/62530664-44e8c000-b841-11e9-88d5-cb06906f412f.gif)
+![Screenshots](https://user-images.githubusercontent.com/6145715/62531210-4961a880-b842-11e9-918e-296cc0fd1666.gif)
 
 ## Getting started
 
