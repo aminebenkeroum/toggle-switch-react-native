@@ -121,6 +121,7 @@ export default class ToggleSwitch extends React.Component {
       toValue = -1
     }
 
+
     Animated.timing(this.offsetX, {
       toValue,
       duration: 300
