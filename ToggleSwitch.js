@@ -110,16 +110,6 @@ export default class ToggleSwitch extends React.Component {
   render() {
     const { isOn, onToggle, disabled, labelStyle, label, icon } = this.props;
 
-    let toValue;
-    if (!I18nManager.isRTL && this.props.isOn) {
-      toValue = this.dimensions.width - this.dimensions.translateX
-    }
-    else if (I18nManager.isRTL && this.props.isOn) {
-      toValue = -this.dimensions.width + this.dimensions.translateX
-    }
-    else {
-      toValue = -1
-    }
 
 
     Animated.timing(this.offsetX, {
