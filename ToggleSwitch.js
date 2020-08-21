@@ -13,7 +13,8 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Animated
+  Animated,
+  Platform
 } from "react-native";
 
 import PropTypes from "prop-types";
@@ -51,13 +52,18 @@ export default class ToggleSwitch extends React.Component {
   static propTypes = {
     isOn: PropTypes.bool.isRequired,
     label: PropTypes.string,
-    onColor: PropTypes.string.isRequired,
-    offColor: PropTypes.string.isRequired,
+    onColor: PropTypes.string,
+    offColor: PropTypes.string,
     size: PropTypes.string,
-    labelStyle: PropTypes.object,
+    labelStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    thumbOnStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    thumbOffStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    trackOnStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    trackOffStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
     onToggle: PropTypes.func,
     icon: PropTypes.object,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
+    animationSpeed: PropTypes.number
   };
 
   static defaultProps = {
@@ -71,41 +77,47 @@ export default class ToggleSwitch extends React.Component {
     trackOnStyle: {},
     trackOffStyle: {},
     icon: null,
-    disabled: false
+    disabled: false,
+    animationSpeed: 300
   };
 
   offsetX = new Animated.Value(0);
   dimensions = ToggleSwitch.calculateDimensions(this.props.size);
 
-  createToggleSwitchStyle = () => ({
-    justifyContent: "center",
-    width: this.dimensions.width,
-    borderRadius: 20,
-    padding: this.dimensions.padding,
-    backgroundColor: this.props.isOn ? this.props.onColor : this.props.offColor,
-    ...(this.props.isOn ? this.props.trackOnStyle : this.props.trackOffStyle)
-  });
-
-  createInsideCircleStyle = () => ({
-    alignItems: "center",
-    justifyContent: "center",
-    margin: 4,
-    position: "absolute",
-    backgroundColor: "white",
-    transform: [{ translateX: this.offsetX }],
-    width: this.dimensions.circleWidth,
-    height: this.dimensions.circleHeight,
-    borderRadius: this.dimensions.circleWidth / 2,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
+  createToggleSwitchStyle = () => [
+    {
+      justifyContent: "center",
+      width: this.dimensions.width,
+      borderRadius: 20,
+      padding: this.dimensions.padding,
+      backgroundColor: this.props.isOn ? this.props.onColor : this.props.offColor
     },
-    shadowOpacity: 0.2,
-    shadowRadius: 2.5,
-    elevation: 1.5,
-    ...(this.props.isOn ? this.props.thumbOnStyle : this.props.thumbOffStyle)
-  });
+    this.props.isOn ? this.props.trackOnStyle : this.props.trackOffStyle
+  ];
+
+  createInsideCircleStyle = () => [
+    {
+      alignItems: "center",
+      justifyContent: "center",
+      margin: Platform.OS === "web" ? 0 : 4,
+      left: Platform.OS === "web" ? 4 : 0,
+      position: "absolute",
+      backgroundColor: "white",
+      transform: [{ translateX: this.offsetX }],
+      width: this.dimensions.circleWidth,
+      height: this.dimensions.circleHeight,
+      borderRadius: this.dimensions.circleWidth / 2,
+      shadowColor: "#000",
+      shadowOffset: {
+        width: 0,
+        height: 2
+      },
+      shadowOpacity: 0.2,
+      shadowRadius: 2.5,
+      elevation: 1.5
+    },
+    this.props.isOn ? this.props.thumbOnStyle : this.props.thumbOffStyle
+  ];
 
   render() {
     const { isOn, onToggle, disabled, labelStyle, label, icon } = this.props;
@@ -116,8 +128,7 @@ export default class ToggleSwitch extends React.Component {
 
     Animated.timing(this.offsetX, {
       toValue,
-      duration: 300,
-      useNativeDriver: true,
+      duration: this.props.animationSpeed
     }).start();
 
     return (
@@ -148,3 +159,4 @@ const styles = StyleSheet.create({
     marginHorizontal: 10
   }
 });
+
