@@ -128,7 +128,8 @@ export default class ToggleSwitch extends React.Component {
 
     Animated.timing(this.offsetX, {
       toValue,
-      duration: this.props.animationSpeed
+      duration: this.props.animationSpeed,
+      useNativeDriver: true,
     }).start();
 
     return (
