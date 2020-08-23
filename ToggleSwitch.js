@@ -63,7 +63,9 @@ export default class ToggleSwitch extends React.Component {
     onToggle: PropTypes.func,
     icon: PropTypes.object,
     disabled: PropTypes.bool,
-    animationSpeed: PropTypes.number
+    animationSpeed: PropTypes.number,
+    useNativeDriver: PropTypes.bool,
+    circleColor: PropTypes.string,
   };
 
   static defaultProps = {
@@ -78,7 +80,9 @@ export default class ToggleSwitch extends React.Component {
     trackOffStyle: {},
     icon: null,
     disabled: false,
-    animationSpeed: 300
+    animationSpeed: 300,
+    useNativeDriver: true,
+    circleColor: 'white'
   };
 
   offsetX = new Animated.Value(0);
@@ -102,7 +106,7 @@ export default class ToggleSwitch extends React.Component {
       margin: Platform.OS === "web" ? 0 : 4,
       left: Platform.OS === "web" ? 4 : 0,
       position: "absolute",
-      backgroundColor: "white",
+      backgroundColor: this.props.circleColor,
       transform: [{ translateX: this.offsetX }],
       width: this.dimensions.circleWidth,
       height: this.dimensions.circleHeight,
@@ -129,7 +133,7 @@ export default class ToggleSwitch extends React.Component {
     Animated.timing(this.offsetX, {
       toValue,
       duration: this.props.animationSpeed,
-      useNativeDriver: true,
+      useNativeDriver: this.props.useNativeDriver,
     }).start();
 
     return (
