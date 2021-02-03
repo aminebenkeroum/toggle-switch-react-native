@@ -124,7 +124,7 @@ export default class ToggleSwitch extends React.Component {
   ];
 
   render() {
-    const { isOn, onToggle, disabled, labelStyle, label, icon } = this.props;
+    const { animationSpeed, size, useNativeDriver, isOn, onToggle, disabled, labelStyle, label, icon } = this.props;
 
     const toValue = isOn
       ? this.dimensions.width - this.dimensions.translateX
@@ -132,12 +132,12 @@ export default class ToggleSwitch extends React.Component {
 
     Animated.timing(this.offsetX, {
       toValue,
-      duration: this.props.animationSpeed,
-      useNativeDriver: this.props.useNativeDriver,
+      duration: animationSpeed,
+      useNativeDriver: useNativeDriver,
     }).start();
 
     return (
-      <View style={styles.container}>
+      <View style={styles.container} {...this.props}>
         {label ? (
           <Text style={[styles.labelStyle, labelStyle]}>{label}</Text>
         ) : null}
