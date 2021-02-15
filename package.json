@@ -1,6 +1,6 @@
 {
   "name": "toggle-switch-react-native",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "Toggle Switch component for react native, it works on iOS and Android.",
   "main": "ToggleSwitch.js",
   "scripts": {
