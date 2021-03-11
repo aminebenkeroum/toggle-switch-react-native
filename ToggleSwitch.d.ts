@@ -7,6 +7,7 @@ export type ToggleSwitchProps = {
   offColor?: string;
   size?: string;
   labelStyle?: object | number;
+  labelPosition?: string;
   thumbOnStyle?: object | number;
   thumbOffStyle?: object | number;
   trackOnStyle?: object | number;
