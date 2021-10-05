@@ -19,6 +19,7 @@ declare module 'toggle-switch-react-native' {
     animationSpeed?: number;
     useNativeDriver?: boolean;
     circleColor?: ColorValue;
+    hitSlop?: null | Insets | number | undefined;
   };
 
   class ToggleSwitch extends React.Component<ToggleSwitchProps> {}

@@ -68,6 +68,15 @@ export default class ToggleSwitch extends React.Component {
     animationSpeed: PropTypes.number,
     useNativeDriver: PropTypes.bool,
     circleColor: PropTypes.string,
+    hitSlop: PropTypes.oneOfType([
+      PropTypes.shape({
+        top: PropTypes.number,
+        bottom: PropTypes.number,
+        left: PropTypes.number,
+        right: PropTypes.number
+      }), 
+      PropTypes.number
+    ]),
   };
 
   static defaultProps = {
@@ -139,6 +148,7 @@ export default class ToggleSwitch extends React.Component {
       labelPosition,
       label,
       icon,
+      hitSlop,
     } = this.props;
 
     let toValue;
@@ -164,6 +174,7 @@ export default class ToggleSwitch extends React.Component {
         <TouchableOpacity
           style={this.createToggleSwitchStyle()}
           activeOpacity={0.8}
+          hitSlop={hitSlop}
           onPress={() => (disabled ? null : onToggle(!isOn))}
         >
           <Animated.View style={this.createInsideCircleStyle()}>
