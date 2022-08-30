@@ -109,6 +109,9 @@ export default class ToggleSwitch extends React.Component {
       backgroundColor: this.props.isOn
         ? this.props.onColor
         : this.props.offColor,
+        paddingBottom :  Platform.OS == "windows" || Platform.OS == "macos" 
+        ? this.dimensions.padding + 2 
+        : this.dimensions.padding 
     },
     this.props.isOn ? this.props.trackOnStyle : this.props.trackOffStyle,
   ];
@@ -121,9 +124,9 @@ export default class ToggleSwitch extends React.Component {
       left: Platform.OS === "web" ? 4 : 0,
       position: "absolute",
       backgroundColor: this.props.circleColor,
-      transform: [{ translateX: this.offsetX }],
+      transform: [{ translateX: this.offsetX  }],
       width: this.dimensions.circleWidth,
-      height: this.dimensions.circleHeight,
+      height: this.dimensions.circleHeight ,
       borderRadius: this.dimensions.circleWidth / 2,
       shadowColor: "#000",
       shadowOffset: {
