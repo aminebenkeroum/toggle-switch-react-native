@@ -104,7 +104,7 @@ export default class ToggleSwitch extends React.Component {
     {
       justifyContent: "center",
       width: this.dimensions.width,
-      borderRadius: 20,
+      borderRadius: Platform.OS == "windows" || Platform.OS == "macos" ? 10 : 20,
       padding: this.dimensions.padding,
       backgroundColor: this.props.isOn
         ? this.props.onColor
