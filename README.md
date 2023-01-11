@@ -12,6 +12,8 @@ Toggle Switch Component for react native, it works on Android, iOS and Web (reac
 
 ## Installation
 
+good luck
+
 - 1. Run `npm i toggle-switch-react-native --save`
 - 2. `import ToggleSwitch from 'toggle-switch-react-native'`
 
